@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6DF015B41D53A4DC00DE4725 /* FetchWeatherData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DF015B31D53A4DC00DE4725 /* FetchWeatherData.m */; };
+		6DF015B81D53A52900DE4725 /* WeatherResponseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DF015B71D53A52900DE4725 /* WeatherResponseParser.m */; };
 		FC47B5DC1C4E87E8007AB88A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FC47B5DB1C4E87E8007AB88A /* main.m */; };
 		FC47B5DF1C4E87E8007AB88A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FC47B5DE1C4E87E8007AB88A /* AppDelegate.m */; };
 		FC47B5E21C4E87E8007AB88A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC47B5E11C4E87E8007AB88A /* ViewController.m */; };
@@ -17,6 +19,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6DF015B21D53A4DC00DE4725 /* FetchWeatherData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FetchWeatherData.h; path = FetchWeatherData/FetchWeatherData.h; sourceTree = "<group>"; };
+		6DF015B31D53A4DC00DE4725 /* FetchWeatherData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FetchWeatherData.m; path = FetchWeatherData/FetchWeatherData.m; sourceTree = "<group>"; };
+		6DF015B61D53A52900DE4725 /* WeatherResponseParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeatherResponseParser.h; path = WeatherDataParser/WeatherResponseParser.h; sourceTree = "<group>"; };
+		6DF015B71D53A52900DE4725 /* WeatherResponseParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeatherResponseParser.m; path = WeatherDataParser/WeatherResponseParser.m; sourceTree = "<group>"; };
 		FC47B5D71C4E87E8007AB88A /* HackathonTravelPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackathonTravelPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC47B5DB1C4E87E8007AB88A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FC47B5DD1C4E87E8007AB88A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -43,10 +49,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6DF015AE1D53A3E300DE4725 /* Network Operation */ = {
+			isa = PBXGroup;
+			children = (
+				6DF015B21D53A4DC00DE4725 /* FetchWeatherData.h */,
+				6DF015B31D53A4DC00DE4725 /* FetchWeatherData.m */,
+			);
+			name = "Network Operation";
+			sourceTree = "<group>";
+		};
+		6DF015B51D53A4E600DE4725 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				6DF015B61D53A52900DE4725 /* WeatherResponseParser.h */,
+				6DF015B71D53A52900DE4725 /* WeatherResponseParser.m */,
+			);
+			name = Parser;
+			sourceTree = "<group>";
+		};
 		FC47B5CE1C4E87E8007AB88A = {
 			isa = PBXGroup;
 			children = (
 				FC47B5F41C4E9D3B007AB88A /* MapKit.framework */,
+				6DF015B51D53A4E600DE4725 /* Parser */,
+				6DF015AE1D53A3E300DE4725 /* Network Operation */,
 				FC47B5D91C4E87E8007AB88A /* HackathonTravelPlanner */,
 				FC47B5D81C4E87E8007AB88A /* Products */,
 			);
@@ -158,6 +184,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC47B5E21C4E87E8007AB88A /* ViewController.m in Sources */,
+				6DF015B41D53A4DC00DE4725 /* FetchWeatherData.m in Sources */,
+				6DF015B81D53A52900DE4725 /* WeatherResponseParser.m in Sources */,
 				FC47B5DF1C4E87E8007AB88A /* AppDelegate.m in Sources */,
 				FC47B5DC1C4E87E8007AB88A /* main.m in Sources */,
 				FC47B5FE1C4E9E73007AB88A /* LocationSearchTable.m in Sources */,
