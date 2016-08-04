@@ -1,10 +1,11 @@
 //
 //  ViewController.m
-//  MapKitTutorialObjC
+//  HackathonTravelPlanner
 //
-//  Created by Robert Chen on 1/19/16.
-//  Copyright © 2016 Robert Chen. All rights reserved.
+//  Created by IBM on 1/19/16.
+//  Copyright © 2016 IBM. All rights reserved.
 //
+
 
 #import "ViewController.h"
 #import "LocationSearchTable.h"

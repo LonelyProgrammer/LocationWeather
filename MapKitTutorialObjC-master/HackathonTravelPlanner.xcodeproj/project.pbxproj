@@ -17,7 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		FC47B5D71C4E87E8007AB88A /* MapKitTutorialObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapKitTutorialObjC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC47B5D71C4E87E8007AB88A /* HackathonTravelPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackathonTravelPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC47B5DB1C4E87E8007AB88A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FC47B5DD1C4E87E8007AB88A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FC47B5DE1C4E87E8007AB88A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -47,7 +47,7 @@
 			isa = PBXGroup;
 			children = (
 				FC47B5F41C4E9D3B007AB88A /* MapKit.framework */,
-				FC47B5D91C4E87E8007AB88A /* MapKitTutorialObjC */,
+				FC47B5D91C4E87E8007AB88A /* HackathonTravelPlanner */,
 				FC47B5D81C4E87E8007AB88A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,12 +55,12 @@
 		FC47B5D81C4E87E8007AB88A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FC47B5D71C4E87E8007AB88A /* MapKitTutorialObjC.app */,
+				FC47B5D71C4E87E8007AB88A /* HackathonTravelPlanner.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		FC47B5D91C4E87E8007AB88A /* MapKitTutorialObjC */ = {
+		FC47B5D91C4E87E8007AB88A /* HackathonTravelPlanner */ = {
 			isa = PBXGroup;
 			children = (
 				FC47B5DD1C4E87E8007AB88A /* AppDelegate.h */,
@@ -75,6 +75,7 @@
 				FC47B5EB1C4E87E8007AB88A /* Info.plist */,
 				FC47B5DA1C4E87E8007AB88A /* Supporting Files */,
 			);
+			name = HackathonTravelPlanner;
 			path = MapKitTutorialObjC;
 			sourceTree = "<group>";
 		};
@@ -89,9 +90,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FC47B5D61C4E87E8007AB88A /* MapKitTutorialObjC */ = {
+		FC47B5D61C4E87E8007AB88A /* HackathonTravelPlanner */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FC47B5EE1C4E87E8007AB88A /* Build configuration list for PBXNativeTarget "MapKitTutorialObjC" */;
+			buildConfigurationList = FC47B5EE1C4E87E8007AB88A /* Build configuration list for PBXNativeTarget "HackathonTravelPlanner" */;
 			buildPhases = (
 				FC47B5D31C4E87E8007AB88A /* Sources */,
 				FC47B5D41C4E87E8007AB88A /* Frameworks */,
@@ -101,9 +102,9 @@
 			);
 			dependencies = (
 			);
-			name = MapKitTutorialObjC;
+			name = HackathonTravelPlanner;
 			productName = MapKitTutorialObjC;
-			productReference = FC47B5D71C4E87E8007AB88A /* MapKitTutorialObjC.app */;
+			productReference = FC47B5D71C4E87E8007AB88A /* HackathonTravelPlanner.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -120,7 +121,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FC47B5D21C4E87E8007AB88A /* Build configuration list for PBXProject "MapKitTutorialObjC" */;
+			buildConfigurationList = FC47B5D21C4E87E8007AB88A /* Build configuration list for PBXProject "HackathonTravelPlanner" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -133,7 +134,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FC47B5D61C4E87E8007AB88A /* MapKitTutorialObjC */,
+				FC47B5D61C4E87E8007AB88A /* HackathonTravelPlanner */,
 			);
 		};
 /* End PBXProject section */
@@ -274,7 +275,7 @@
 				INFOPLIST_FILE = MapKitTutorialObjC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thorntech.MapKitTutorialObjC;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = HackathonTravelPlanner;
 			};
 			name = Debug;
 		};
@@ -285,14 +286,14 @@
 				INFOPLIST_FILE = MapKitTutorialObjC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thorntech.MapKitTutorialObjC;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = HackathonTravelPlanner;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FC47B5D21C4E87E8007AB88A /* Build configuration list for PBXProject "MapKitTutorialObjC" */ = {
+		FC47B5D21C4E87E8007AB88A /* Build configuration list for PBXProject "HackathonTravelPlanner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FC47B5EC1C4E87E8007AB88A /* Debug */,
@@ -301,7 +302,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FC47B5EE1C4E87E8007AB88A /* Build configuration list for PBXNativeTarget "MapKitTutorialObjC" */ = {
+		FC47B5EE1C4E87E8007AB88A /* Build configuration list for PBXNativeTarget "HackathonTravelPlanner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FC47B5EF1C4E87E8007AB88A /* Debug */,
