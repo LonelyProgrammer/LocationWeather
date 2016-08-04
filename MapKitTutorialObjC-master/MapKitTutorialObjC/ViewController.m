@@ -10,6 +10,7 @@
 #import "ViewController.h"
 #import "LocationSearchTable.h"
 
+
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
@@ -23,7 +24,8 @@ MKPlacemark *selectedPin;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    sharedObject = [[WeatherResponseParser sharedManager]init];
+    [sharedObject startWeatherDataDownLoad];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(openUserSelection) name:@"UserSelecton" object:nil];
     
     locationManager = [[CLLocationManager alloc] init];

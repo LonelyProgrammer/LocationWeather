@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FetchWeatherData : NSObject
+@interface FetchWeatherData : NSObject<NSURLSessionDelegate>{
+    
+}
++ (id) sharedManager;
+-(void) startWeatherDataDownLoad;
+-(NSDictionary*) getParsedDictionary;
 
 @end

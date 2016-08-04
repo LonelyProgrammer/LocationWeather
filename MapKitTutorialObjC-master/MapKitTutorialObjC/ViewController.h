@@ -8,13 +8,18 @@
 
 
 #import <UIKit/UIKit.h>
+#import "WeatherResponseParser.h"
+
 @import MapKit;
+
 
 @protocol HandleMapSearch <NSObject>
 - (void)dropPinZoomIn:(MKPlacemark *)placemark;
 @end
 
-@interface ViewController : UIViewController <CLLocationManagerDelegate, HandleMapSearch, MKMapViewDelegate>
+@interface ViewController : UIViewController <CLLocationManagerDelegate, HandleMapSearch, MKMapViewDelegate>{
+    WeatherResponseParser * sharedObject;
+}
 @property (weak, nonatomic) IBOutlet UIView *vw_UserSelection;
 
 @end

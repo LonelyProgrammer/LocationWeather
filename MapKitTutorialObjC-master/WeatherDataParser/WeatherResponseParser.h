@@ -7,7 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FetchWeatherData.h"
 
-@interface WeatherResponseParser : NSObject
+@interface WeatherResponseParser : NSObject{
+    FetchWeatherData* sharedObject;
+}
+-(void) startWeatherDataDownLoad;
++ (id)sharedManager;
 
 @end
