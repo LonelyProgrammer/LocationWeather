@@ -8,11 +8,14 @@
 
 
 #import "ViewController.h"
-#import "LocationSearchTable.h"
+//#import "LocationSearchTable.h"
+#import "UserLocationDetails.h"
+#import "SearchLocation.h"
 
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property NSMutableArray *arrUserLocation;
 
 @end
 
@@ -25,8 +28,8 @@ MKPlacemark *selectedPin;
 - (void)viewDidLoad {
     [super viewDidLoad];
     sharedObject = [[WeatherResponseParser sharedManager]init];
-    [sharedObject startWeatherDataDownLoad];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(openUserSelection) name:@"UserSelecton" object:nil];
+    //[sharedObject startWeatherDataDownLoad];
+    //[[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(openUserSelection) name:@"UserSelecton" object:nil];
     
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
@@ -34,9 +37,9 @@ MKPlacemark *selectedPin;
     [locationManager requestLocation];
     [locationManager requestWhenInUseAuthorization];
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-    LocationSearchTable *locationSearchTable = [storyboard instantiateViewControllerWithIdentifier:@"LocationSearchTable"];
-    resultSearchController = [[UISearchController alloc] initWithSearchResultsController:locationSearchTable];
+    //UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+   // LocationSearchTable *locationSearchTable = [storyboard instantiateViewControllerWithIdentifier:@"LocationSearchTable"];
+    //resultSearchController = [[UISearchController alloc] initWithSearchResultsController:locationSearchTable];
 //    resultSearchController.searchResultsUpdater = locationSearchTable;
 //    
 //    UISearchBar *searchBar = resultSearchController.searchBar;
@@ -90,8 +93,24 @@ MKPlacemark *selectedPin;
     [_mapView setRegion:region animated:true];
 }
 
-- (void)dropPinZoomIn:(MKPlacemark *)placemark
+- (void)dropPinZoomIn:(MKPlacemark *)placemark :(int)Tag
 {
+    UserLocationDetails *userLocationDetails = [[UserLocationDetails alloc]init];
+    userLocationDetails.userplacemark = (MKPlacemark *)placemark;
+    userLocationDetails.locationID = Tag;
+    [_arrUserLocation addObject:userLocationDetails];
+    
+    
+    if (Tag == 1) {
+        _txtFromLocation.text = placemark.name;
+    }
+    else if(Tag == 2){
+        _txtToLocation.text = placemark.name;
+    }
+    
+    
+    
+    
     // cache the pin
     selectedPin = placemark;
     // clear existing pins
@@ -117,7 +136,7 @@ MKPlacemark *selectedPin;
     }
     
     static NSString *reuseId = @"pin";
-
+    
     MKPinAnnotationView *pinView = (MKPinAnnotationView *) [_mapView dequeueReusableAnnotationViewWithIdentifier:reuseId];
     if (pinView == nil) {
         pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:reuseId];
@@ -133,13 +152,40 @@ MKPlacemark *selectedPin;
                       forState:UIControlStateNormal];
     [button addTarget:self action:@selector(getDirections) forControlEvents:UIControlEventTouchUpInside];
     pinView.leftCalloutAccessoryView = button;
-
+    
     return pinView;
 }
 
 - (void)getDirections {
     MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:selectedPin];
     [mapItem openInMapsWithLaunchOptions:(@{MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving})];
+}
+
+#pragma mark TextField Delegate
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    SearchLocation *locationSearchTable = [storyboard instantiateViewControllerWithIdentifier:@"SearchLocation"];
+    locationSearchTable.handleMapSearchDelegate = self;
+    locationSearchTable.selectedTextFieldTag = (int)textField.tag;
+    [[self navigationController] setNavigationBarHidden:NO animated:YES];
+    [self presentViewController:locationSearchTable animated:YES completion:nil];
+}
+
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    return YES;
+}
+
+#pragma mark ---
+
+
+
+
+- (IBAction)submitBtnClick:(id)sender {
+    _vw_UserSelection.hidden = YES;
 }
 
 @end

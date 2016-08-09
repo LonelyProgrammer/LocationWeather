@@ -12,7 +12,7 @@
     
 }
 + (id) sharedManager;
--(void) startWeatherDataDownLoad;
+-(void) startWeatherDataDownLoad:(NSString*)latitude withLongitude:(NSString*)longitude;
 -(NSDictionary*) getParsedDictionary;
 
 @end

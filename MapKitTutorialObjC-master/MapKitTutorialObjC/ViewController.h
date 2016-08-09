@@ -14,13 +14,16 @@
 
 
 @protocol HandleMapSearch <NSObject>
-- (void)dropPinZoomIn:(MKPlacemark *)placemark;
+- (void)dropPinZoomIn:(MKPlacemark *)placemark :(int)Tag;
 @end
 
 @interface ViewController : UIViewController <CLLocationManagerDelegate, HandleMapSearch, MKMapViewDelegate>{
     WeatherResponseParser * sharedObject;
 }
 @property (weak, nonatomic) IBOutlet UIView *vw_UserSelection;
+@property (weak, nonatomic) IBOutlet UITextField *txtFromLocation;
+@property (weak, nonatomic) IBOutlet UITextField *txtToLocation;
+- (IBAction)submitBtnClick:(id)sender;
 
 @end
 

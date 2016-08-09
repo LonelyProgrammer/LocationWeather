@@ -28,11 +28,14 @@
     return self;
 }
 
--(void)startWeatherDataDownLoad{
+-(void) startWeatherDataDownLoad:(NSString*)latitude withLongitude:(NSString*)longitude{
     
     NSURLSession *session = [NSURLSession sharedSession];
+//    NSString* urlString = [NSString stringWithFormat:
+//                                        @"https://api.weather.com/v1/geocode/34.063/-84.217/forecast/daily/3day.json?language=en-US&units=e&apiKey=%@",weatherApiKey];
+    
     NSString* urlString = [NSString stringWithFormat:
-                                        @"https://api.weather.com/v1/geocode/34.063/-84.217/forecast/daily/3day.json?language=en-US&units=e&apiKey=%@",weatherApiKey];
+                           @"https://api.weather.com/v1/geocode/%@/%@/forecast/daily/3day.json?language=en-US&units=e&apiKey=%@",weatherApiKey,latitude,longitude];
     NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:urlString] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         parsedJsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
         NSLog(@"The parsed Json is =%@", parsedJsonDictionary);
