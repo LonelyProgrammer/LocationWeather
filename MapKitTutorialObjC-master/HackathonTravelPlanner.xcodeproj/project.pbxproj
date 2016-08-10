@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D4760C61D5B588900355862 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D4760C41D5B588900355862 /* Main.storyboard */; };
 		6DEAB52A1D5A0B330069C219 /* SearchLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DEAB5291D5A0B330069C219 /* SearchLocation.m */; };
 		6DEAB52E1D5A0B750069C219 /* UserLocationDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DEAB52D1D5A0B750069C219 /* UserLocationDetails.m */; };
-		6DEAB5311D5A0CB00069C219 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DEAB52F1D5A0CB00069C219 /* Main.storyboard */; };
 		6DF015B41D53A4DC00DE4725 /* FetchWeatherData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DF015B31D53A4DC00DE4725 /* FetchWeatherData.m */; };
 		6DF015B81D53A52900DE4725 /* WeatherResponseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DF015B71D53A52900DE4725 /* WeatherResponseParser.m */; };
 		FC47B5DC1C4E87E8007AB88A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FC47B5DB1C4E87E8007AB88A /* main.m */; };
@@ -21,11 +21,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6D4760C51D5B588900355862 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6DEAB5281D5A0B330069C219 /* SearchLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchLocation.h; path = "Search Location/SearchLocation.h"; sourceTree = "<group>"; };
 		6DEAB5291D5A0B330069C219 /* SearchLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchLocation.m; path = "Search Location/SearchLocation.m"; sourceTree = "<group>"; };
 		6DEAB52C1D5A0B750069C219 /* UserLocationDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserLocationDetails.h; path = UserLocation/UserLocationDetails.h; sourceTree = "<group>"; };
 		6DEAB52D1D5A0B750069C219 /* UserLocationDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserLocationDetails.m; path = UserLocation/UserLocationDetails.m; sourceTree = "<group>"; };
-		6DEAB5301D5A0CB00069C219 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "../../../../SametimeFileTransfers/MapKitTutorialObjC-master/MapKitTutorialObjC/Base.lproj/Main.storyboard"; sourceTree = "<group>"; };
 		6DF015B21D53A4DC00DE4725 /* FetchWeatherData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FetchWeatherData.h; path = FetchWeatherData/FetchWeatherData.h; sourceTree = "<group>"; };
 		6DF015B31D53A4DC00DE4725 /* FetchWeatherData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FetchWeatherData.m; path = FetchWeatherData/FetchWeatherData.m; sourceTree = "<group>"; };
 		6DF015B61D53A52900DE4725 /* WeatherResponseParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeatherResponseParser.h; path = WeatherDataParser/WeatherResponseParser.h; sourceTree = "<group>"; };
@@ -115,7 +115,7 @@
 		FC47B5D91C4E87E8007AB88A /* HackathonTravelPlanner */ = {
 			isa = PBXGroup;
 			children = (
-				6DEAB52F1D5A0CB00069C219 /* Main.storyboard */,
+				6D4760C41D5B588900355862 /* Main.storyboard */,
 				FC47B5DD1C4E87E8007AB88A /* AppDelegate.h */,
 				FC47B5DE1C4E87E8007AB88A /* AppDelegate.m */,
 				FC47B5E01C4E87E8007AB88A /* ViewController.h */,
@@ -196,7 +196,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6DEAB5311D5A0CB00069C219 /* Main.storyboard in Resources */,
+				6D4760C61D5B588900355862 /* Main.storyboard in Resources */,
 				FC47B5EA1C4E87E8007AB88A /* LaunchScreen.storyboard in Resources */,
 				FC47B5E71C4E87E8007AB88A /* Assets.xcassets in Resources */,
 			);
@@ -223,10 +223,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		6DEAB52F1D5A0CB00069C219 /* Main.storyboard */ = {
+		6D4760C41D5B588900355862 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				6DEAB5301D5A0CB00069C219 /* Base */,
+				6D4760C51D5B588900355862 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
