@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtFromLocation;
 @property (weak, nonatomic) IBOutlet UITextField *txtToLocation;
 - (IBAction)submitBtnClick:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextField *datePicketText;
 
 @end
 

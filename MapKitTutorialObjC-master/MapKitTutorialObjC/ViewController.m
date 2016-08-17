@@ -28,8 +28,13 @@ MKPlacemark *selectedPin;
 - (void)viewDidLoad {
     [super viewDidLoad];
     sharedObject = [[WeatherResponseParser sharedManager]init];
-    //[sharedObject startWeatherDataDownLoad];
     //[[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(openUserSelection) name:@"UserSelecton" object:nil];
+    
+    UIDatePicker *datePicker = [[UIDatePicker alloc]init];
+    [datePicker setDate:[NSDate date]];
+    datePicker.datePickerMode = UIDatePickerModeDate;
+    [datePicker addTarget:self action:@selector(dateTextField:) forControlEvents:UIControlEventValueChanged];
+    [self.datePicketText setInputView:datePicker];
     
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
@@ -192,6 +197,18 @@ MKPlacemark *selectedPin;
 
 - (IBAction)submitBtnClick:(id)sender {
     _vw_UserSelection.hidden = YES;
+}
+
+-(void) dateTextField:(id)sender
+{
+    UIDatePicker *picker = (UIDatePicker*)self.datePicketText.inputView;
+    [picker setMaximumDate:[NSDate date]];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    NSDate *eventDate = picker.date;
+    [dateFormat setDateFormat:@"dd/MM/yyyy"];
+    
+    NSString *dateString = [dateFormat stringFromDate:eventDate];
+    self.datePicketText.text = [NSString stringWithFormat:@"%@",dateString];
 }
 
 @end
