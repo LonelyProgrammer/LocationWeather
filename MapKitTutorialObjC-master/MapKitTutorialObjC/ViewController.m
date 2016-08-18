@@ -29,7 +29,7 @@ MKPlacemark *selectedPin;
     [super viewDidLoad];
     sharedObject = [[WeatherResponseParser sharedManager]init];
     //[[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(openUserSelection) name:@"UserSelecton" object:nil];
-    
+    numberOfDays = 0;
     UIDatePicker *datePicker = [[UIDatePicker alloc]init];
     [datePicker setDate:[NSDate date]];
     datePicker.datePickerMode = UIDatePickerModeDate;
@@ -97,18 +97,7 @@ MKPlacemark *selectedPin;
     userLocationDetails.userplacemark = (MKPlacemark *)placemark;
     userLocationDetails.locationID = Tag;
     [_arrUserLocation addObject:userLocationDetails];
-    
-    
-    if (Tag == 1) {
-        _txtFromLocation.text = placemark.name;
-    }
-    else if(Tag == 2){
-        _txtToLocation.text = placemark.name;
-    }
-    
-    
-    
-    
+    _txtToLocation.text = placemark.name;
     // cache the pin
     selectedPin = placemark;
     // clear existing pins
