@@ -35,6 +35,7 @@ MKPlacemark *selectedPin;
     datePicker.datePickerMode = UIDatePickerModeDate;
     [datePicker addTarget:self action:@selector(dateTextField:) forControlEvents:UIControlEventValueChanged];
     [self.datePicketText setInputView:datePicker];
+    [self.datePicketText setPlaceholder:@"Maximum 10 days from current date"];
     
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
@@ -42,31 +43,14 @@ MKPlacemark *selectedPin;
     [locationManager requestLocation];
     [locationManager requestWhenInUseAuthorization];
     
-    //UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-   // LocationSearchTable *locationSearchTable = [storyboard instantiateViewControllerWithIdentifier:@"LocationSearchTable"];
-    //resultSearchController = [[UISearchController alloc] initWithSearchResultsController:locationSearchTable];
-//    resultSearchController.searchResultsUpdater = locationSearchTable;
-//    
-//    UISearchBar *searchBar = resultSearchController.searchBar;
-//    [searchBar sizeToFit];
-//    searchBar.placeholder = @"Search for places";
-//    self.navigationItem.titleView = resultSearchController.searchBar;
-//    
-//    resultSearchController.hidesNavigationBarDuringPresentation = NO;
-//    resultSearchController.dimsBackgroundDuringPresentation = YES;
-//    self.definesPresentationContext = YES;
-//
-//    locationSearchTable.mapView = _mapView;
-//
-//    locationSearchTable.handleMapSearchDelegate = self;
     self.title = @"Weather Tracker";
     
     UIBarButtonItem *searchButton = [[UIBarButtonItem alloc] initWithTitle:nil style:UIBarButtonItemStylePlain
-                                                                     target:self action:@selector(userSelectionOpen:)];
+                                                                    target:self action:@selector(userSelectionOpen:)];
     [searchButton setImage:[UIImage imageNamed:@"search"]];
     
     self.navigationItem.rightBarButtonItem = searchButton;
-
+    
 }
 
 -(void)openUserSelection{
@@ -74,7 +58,10 @@ MKPlacemark *selectedPin;
 }
 
 -(IBAction)userSelectionOpen:(id)sender{
-    _vw_UserSelection.hidden = NO;
+    if(_vw_UserSelection.hidden)
+        _vw_UserSelection.hidden = NO;
+    else
+        _vw_UserSelection.hidden = YES;
 }
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
@@ -202,13 +189,22 @@ MKPlacemark *selectedPin;
 -(void) dateTextField:(id)sender
 {
     UIDatePicker *picker = (UIDatePicker*)self.datePicketText.inputView;
-    [picker setMaximumDate:[NSDate date]];
+    [picker setMinimumDate:[NSDate date]];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDate *currentDate = [NSDate date];
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    [comps setDay:10];
+    NSDate *maxDate = [calendar dateByAddingComponents:comps toDate:currentDate options:0];
+
+    [picker setMaximumDate:maxDate];
+    comps = nil;
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     NSDate *eventDate = picker.date;
     [dateFormat setDateFormat:@"dd/MM/yyyy"];
     
     NSString *dateString = [dateFormat stringFromDate:eventDate];
     self.datePicketText.text = [NSString stringWithFormat:@"%@",dateString];
+    [self.datePicketText resignFirstResponder];
 }
 
 @end
