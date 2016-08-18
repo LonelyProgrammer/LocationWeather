@@ -26,7 +26,7 @@
     return self;
 }
 
--(void) startWeatherDataDownLoad:(NSString*)latitude withLongitude:(NSString*)longitude{
-    [sharedObject startWeatherDataDownLoad:latitude withLongitude:longitude];
+-(void) startWeatherDataDownLoad:(NSString*)latitude withLongitude:(NSString*)longitude withNumberOfDays:(int)days{
+    [sharedObject startWeatherDataDownLoad:latitude withLongitude:longitude withNumberOfDays:days];
 }
 @end

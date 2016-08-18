@@ -12,7 +12,7 @@
 @interface WeatherResponseParser : NSObject{
     FetchWeatherData* sharedObject;
 }
--(void) startWeatherDataDownLoad:(NSString*)latitude withLongitude:(NSString*)longitude;
+-(void) startWeatherDataDownLoad:(NSString*)latitude withLongitude:(NSString*)longitude withNumberOfDays:(int)days;
 + (id)sharedManager;
 
 @end

@@ -80,11 +80,8 @@ MKPlacemark *selectedPin;
      didUpdateLocations:(NSArray<CLLocation *> *)locations
 {
     CLLocation *location = [locations firstObject];
-    NSString* latitude = [NSString stringWithFormat:@"%g", location.coordinate.latitude];
-    NSString* longitude = [NSString stringWithFormat:@"%g", location.coordinate.longitude];
-   
-    //Get the weather Info based on latitude and Longitude
-    [sharedObject startWeatherDataDownLoad:latitude withLongitude:longitude];
+     latitude = [NSString stringWithFormat:@"%g", location.coordinate.latitude];
+     longitude = [NSString stringWithFormat:@"%g", location.coordinate.longitude];
     
     NSMutableArray *temp = [[NSMutableArray alloc] initWithCapacity:0];
     [temp addObject:latitude];
@@ -184,6 +181,8 @@ MKPlacemark *selectedPin;
 
 - (IBAction)submitBtnClick:(id)sender {
     _vw_UserSelection.hidden = YES;
+    //Get the weather Info based on latitude and Longitude
+    [sharedObject startWeatherDataDownLoad:latitude withLongitude:longitude withNumberOfDays:numberOfDays];
 }
 
 -(void) dateTextField:(id)sender
@@ -204,6 +203,11 @@ MKPlacemark *selectedPin;
     
     NSString *dateString = [dateFormat stringFromDate:eventDate];
     self.datePicketText.text = [NSString stringWithFormat:@"%@",dateString];
+    NSDateComponents *components = [calendar components:NSCalendarUnitDay
+                                                        fromDate:currentDate
+                                                          toDate:eventDate
+                                                         options:0];
+    numberOfDays = (int)[components day];
     [self.datePicketText resignFirstResponder];
 }
 

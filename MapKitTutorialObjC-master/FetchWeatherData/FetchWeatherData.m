@@ -28,17 +28,61 @@
     return self;
 }
 
--(void) startWeatherDataDownLoad:(NSString*)latitude withLongitude:(NSString*)longitude{
+-(void) startWeatherDataDownLoad:(NSString*)latitude withLongitude:(NSString*)longitude withNumberOfDays:(int)days{
     
     NSURLSession *session = [NSURLSession sharedSession];
-    NSString* urlString = [NSString stringWithFormat:
-                           @"https://api.weather.com/v1/geocode/%@/%@/forecast/daily/3day.json?language=en-US&units=e&apiKey=%@",latitude,longitude,weatherApiKey];
+    NSString* urlString;
+    switch (days) {
+        case 1:
+        case 2:
+            urlString = [NSString stringWithFormat:
+                         @"https://api.weather.com/v1/geocode/%@/%@/observations/current.json?language=en-US&units=e&apiKey=%@",latitude,longitude,weatherApiKey];
+            
+            break;
+            
+        case 3:
+        case 4:{
+            urlString = [NSString stringWithFormat:
+                         @"https://api.weather.com/v1/geocode/%@/%@/forecast/daily/%dday.json?language=en-US&units=e&apiKey=%@",latitude,longitude,3,weatherApiKey];
+        }
+            break;
+            
+        case 5:
+        case 6:{
+            urlString = [NSString stringWithFormat:
+                         @"https://api.weather.com/v1/geocode/%@/%@/forecast/daily/%dday.json?language=en-US&units=e&apiKey=%@",latitude,longitude,5,weatherApiKey];
+        }
+            break;
+            
+        case 7:
+        case 8:{
+            urlString = [NSString stringWithFormat:
+                         @"https://api.weather.com/v1/geocode/%@/%@/forecast/daily/%dday.json?language=en-US&units=e&apiKey=%@",latitude,longitude,7,weatherApiKey];
+        }
+            break;
+            
+        case 9:
+        case 10:
+        case 11:{
+            urlString = [NSString stringWithFormat:
+                         @"https://api.weather.com/v1/geocode/%@/%@/forecast/daily/%dday.json?language=en-US&units=e&apiKey=%@",latitude,longitude,10,weatherApiKey];
+        }
+            break;
+            
+        default:
+            urlString = [NSString stringWithFormat:
+                         @"https://api.weather.com/v1/geocode/%@/%@/observations/current.json?language=en-US&units=e&apiKey=%@",latitude,longitude,weatherApiKey];
+
+            break;
+    }
+
     NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:urlString] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         parsedJsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
         NSLog(@"The parsed Json is =%@", parsedJsonDictionary);
     }];
     [dataTask resume];
 }
+
 
 -(NSDictionary*) getParsedDictionary{
     return parsedJsonDictionary;

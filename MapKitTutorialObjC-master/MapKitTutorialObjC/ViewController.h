@@ -19,6 +19,9 @@
 
 @interface ViewController : UIViewController <CLLocationManagerDelegate, HandleMapSearch, MKMapViewDelegate>{
     WeatherResponseParser * sharedObject;
+    NSString* latitude;
+    NSString* longitude;
+    int numberOfDays;
 }
 @property (weak, nonatomic) IBOutlet UIView *vw_UserSelection;
 @property (weak, nonatomic) IBOutlet UITextField *txtFromLocation;
