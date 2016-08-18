@@ -24,8 +24,8 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="LRr-AS-fCk"/>
                                 </connections>
                             </mapView>
-                            <view hidden="YES" alpha="0.84999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c7n-eX-BAC">
-                                <rect key="frame" x="0.0" y="65" width="600" height="163"/>
+                            <view hidden="YES" alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c7n-eX-BAC">
+                                <rect key="frame" x="0.0" y="64" width="600" height="163"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Fr-lU-luT">
                                         <rect key="frame" x="2" y="48" width="42" height="21"/>
@@ -33,13 +33,7 @@
                                             <constraint firstAttribute="width" constant="42" id="T9A-jv-0Xx"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vKx-gc-guL">
-                                        <rect key="frame" x="2" y="88" width="42" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder=" Enter the Location you are travelling to" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kUq-TJ-dEi">
@@ -47,6 +41,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="cPa-2Z-4dH"/>
                                         </constraints>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -67,20 +62,28 @@
                                             <constraint firstAttribute="width" constant="49" id="XuW-Qb-78K"/>
                                             <constraint firstAttribute="height" constant="30" id="d39-bp-GHE"/>
                                         </constraints>
-                                        <state key="normal" title="Submit"/>
+                                        <state key="normal" title="Go">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="submitBtnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="usa-gG-DIF"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Visit Date:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vKx-gc-guL">
+                                        <rect key="frame" x="2" y="85" width="58" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="vKx-gc-guL" firstAttribute="top" secondItem="9Fr-lU-luT" secondAttribute="bottom" constant="19" id="4Yp-ir-cuO"/>
+                                    <constraint firstItem="vKx-gc-guL" firstAttribute="top" secondItem="9Fr-lU-luT" secondAttribute="bottom" constant="16" id="4Yp-ir-cuO"/>
                                     <constraint firstItem="cmI-3E-9JO" firstAttribute="top" secondItem="YAn-gf-9eK" secondAttribute="bottom" constant="13" id="9hJ-nj-Kga"/>
                                     <constraint firstAttribute="bottom" secondItem="cmI-3E-9JO" secondAttribute="bottom" constant="8" id="9hb-qZ-nel"/>
                                     <constraint firstItem="kUq-TJ-dEi" firstAttribute="baseline" secondItem="9Fr-lU-luT" secondAttribute="baseline" id="Hdh-Kt-jLP"/>
                                     <constraint firstAttribute="height" constant="163" id="NBs-H7-PWH"/>
-                                    <constraint firstItem="9Fr-lU-luT" firstAttribute="trailing" secondItem="vKx-gc-guL" secondAttribute="trailing" id="UOv-am-bQB"/>
+                                    <constraint firstItem="9Fr-lU-luT" firstAttribute="trailing" secondItem="vKx-gc-guL" secondAttribute="trailing" constant="-16" id="UOv-am-bQB"/>
                                     <constraint firstItem="kUq-TJ-dEi" firstAttribute="leading" secondItem="9Fr-lU-luT" secondAttribute="trailing" constant="31" id="cSe-QH-vnY"/>
                                     <constraint firstAttribute="trailing" secondItem="YAn-gf-9eK" secondAttribute="trailing" constant="46" id="cu2-W0-TTF"/>
                                     <constraint firstItem="YAn-gf-9eK" firstAttribute="top" secondItem="kUq-TJ-dEi" secondAttribute="bottom" constant="7" id="f24-Ef-M0O"/>
@@ -88,7 +91,7 @@
                                     <constraint firstItem="9Fr-lU-luT" firstAttribute="leading" secondItem="vKx-gc-guL" secondAttribute="leading" id="jjR-Fp-WkR"/>
                                     <constraint firstAttribute="trailing" secondItem="kUq-TJ-dEi" secondAttribute="trailing" constant="46" id="kJq-dE-RkN"/>
                                     <constraint firstItem="cmI-3E-9JO" firstAttribute="centerX" secondItem="c7n-eX-BAC" secondAttribute="centerX" constant="-8.5" id="naR-56-6U9"/>
-                                    <constraint firstItem="YAn-gf-9eK" firstAttribute="leading" secondItem="vKx-gc-guL" secondAttribute="trailing" constant="31" id="zLL-fn-fIq"/>
+                                    <constraint firstItem="YAn-gf-9eK" firstAttribute="leading" secondItem="vKx-gc-guL" secondAttribute="trailing" constant="15" id="zLL-fn-fIq"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -99,7 +102,7 @@
                             <constraint firstItem="c7n-eX-BAC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="ShF-cM-EH4"/>
                             <constraint firstItem="udx-Zq-2xl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Vxn-Zr-1Kq"/>
                             <constraint firstItem="udx-Zq-2xl" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="gUw-5b-Jxm"/>
-                            <constraint firstItem="c7n-eX-BAC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="1" id="gjt-wY-od8"/>
+                            <constraint firstItem="c7n-eX-BAC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="gjt-wY-od8"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="udx-Zq-2xl" secondAttribute="bottom" id="mVa-z4-pzc"/>
                         </constraints>
                     </view>
@@ -189,13 +192,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="   Type your location" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RDB-uA-YYb">
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="   Type your location" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RDB-uA-YYb">
                                 <rect key="frame" x="0.0" y="60" width="600" height="44"/>
-                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Yta-ES-yUD"/>
                                 </constraints>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
