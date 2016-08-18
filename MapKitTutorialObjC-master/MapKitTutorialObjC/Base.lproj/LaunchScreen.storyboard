@@ -16,7 +16,18 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Splash_WeatherAssist.png" translatesAutoresizingMaskIntoConstraints="NO" id="VGm-pq-oBe">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VGm-pq-oBe" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="Hiy-zI-je5"/>
+                            <constraint firstItem="VGm-pq-oBe" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="YQS-qb-vgh"/>
+                            <constraint firstItem="VGm-pq-oBe" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" id="bhC-cU-bcB"/>
+                            <constraint firstItem="VGm-pq-oBe" firstAttribute="bottom" secondItem="xb3-aO-Qok" secondAttribute="top" id="tGx-RS-GAT"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -24,4 +35,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Splash_WeatherAssist.png" width="2048" height="1536"/>
+    </resources>
 </document>
