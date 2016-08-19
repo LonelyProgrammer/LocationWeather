@@ -301,7 +301,6 @@ NSString *buttonTitleUppercase;
     [self.datePicketText resignFirstResponder];
 }
 
-<<<<<<< HEAD
 #pragma mark ---Singleton Delegates
 
 -(void) weatherDataParseSuccess{
@@ -310,10 +309,10 @@ NSString *buttonTitleUppercase;
     weatherData = [sharedObject returnFinalParsedDictionary] ;
     [self.weatherDisplay reloadData];
     
-=======
-
+}
 #pragma mark --
 #pragma mark Place Of Interest
+
 - (IBAction)POIClick:(id)sender {
     poiClicked = YES;
     UIButton *btn = (UIButton*)sender;
@@ -425,8 +424,6 @@ NSString *buttonTitleUppercase;
     
 }
 
-
-
 -(void)hideUnhidePOI:(BOOL)status{
     _lbl_poi.hidden = status;
     _btn_bar.hidden = status;
@@ -434,7 +431,6 @@ NSString *buttonTitleUppercase;
     _btn_cafe.hidden = status;
     _btn_park.hidden = status;
     _btn_florist.hidden = status;
->>>>>>> origin/master
 }
 
 @end

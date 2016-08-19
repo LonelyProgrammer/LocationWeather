@@ -12,6 +12,7 @@
 		6DDAB9891D6722D600D876B1 /* ArrowD_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DDAB9861D6722D600D876B1 /* ArrowD_blue.png */; };
 		6DDAB98A1D6722D600D876B1 /* ArrowR_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DDAB9871D6722D600D876B1 /* ArrowR_blue.png */; };
 		6DDAB98B1D6722D600D876B1 /* ArrowR_blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DDAB9881D6722D600D876B1 /* ArrowR_blue@2x.png */; };
+		6DDAB98E1D67268400D876B1 /* MapPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DDAB98D1D67268400D876B1 /* MapPoint.m */; };
 		6DEAB52A1D5A0B330069C219 /* SearchLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DEAB5291D5A0B330069C219 /* SearchLocation.m */; };
 		6DEAB52E1D5A0B750069C219 /* UserLocationDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DEAB52D1D5A0B750069C219 /* UserLocationDetails.m */; };
 		6DF015B41D53A4DC00DE4725 /* FetchWeatherData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DF015B31D53A4DC00DE4725 /* FetchWeatherData.m */; };
@@ -30,6 +31,8 @@
 		6DDAB9861D6722D600D876B1 /* ArrowD_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ArrowD_blue.png; sourceTree = "<group>"; };
 		6DDAB9871D6722D600D876B1 /* ArrowR_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ArrowR_blue.png; sourceTree = "<group>"; };
 		6DDAB9881D6722D600D876B1 /* ArrowR_blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ArrowR_blue@2x.png"; sourceTree = "<group>"; };
+		6DDAB98C1D67267B00D876B1 /* MapPoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapPoint.h; sourceTree = "<group>"; };
+		6DDAB98D1D67268400D876B1 /* MapPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapPoint.m; sourceTree = "<group>"; };
 		6DEAB5281D5A0B330069C219 /* SearchLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchLocation.h; path = "Search Location/SearchLocation.h"; sourceTree = "<group>"; };
 		6DEAB5291D5A0B330069C219 /* SearchLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchLocation.m; path = "Search Location/SearchLocation.m"; sourceTree = "<group>"; };
 		6DEAB52C1D5A0B750069C219 /* UserLocationDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserLocationDetails.h; path = UserLocation/UserLocationDetails.h; sourceTree = "<group>"; };
@@ -123,6 +126,8 @@
 		FC47B5D91C4E87E8007AB88A /* HackathonTravelPlanner */ = {
 			isa = PBXGroup;
 			children = (
+				6DDAB98C1D67267B00D876B1 /* MapPoint.h */,
+				6DDAB98D1D67268400D876B1 /* MapPoint.m */,
 				6D4760C41D5B588900355862 /* Main.storyboard */,
 				FC47B5DD1C4E87E8007AB88A /* AppDelegate.h */,
 				FC47B5DE1C4E87E8007AB88A /* AppDelegate.m */,
@@ -230,6 +235,7 @@
 				6DF015B41D53A4DC00DE4725 /* FetchWeatherData.m in Sources */,
 				6DF015B81D53A52900DE4725 /* WeatherResponseParser.m in Sources */,
 				FC47B5DF1C4E87E8007AB88A /* AppDelegate.m in Sources */,
+				6DDAB98E1D67268400D876B1 /* MapPoint.m in Sources */,
 				FC47B5DC1C4E87E8007AB88A /* main.m in Sources */,
 				6DEAB52E1D5A0B750069C219 /* UserLocationDetails.m in Sources */,
 				FC47B5FE1C4E9E73007AB88A /* LocationSearchTable.m in Sources */,
