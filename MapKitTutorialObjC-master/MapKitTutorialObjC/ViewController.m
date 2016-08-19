@@ -28,6 +28,7 @@ MKPlacemark *selectedPin;
 - (void)viewDidLoad {
     [super viewDidLoad];
     sharedObject = [[WeatherResponseParser sharedManager]init];
+    self.weatherDisplay.hidden = YES;
     //[[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(openUserSelection) name:@"UserSelecton" object:nil];
     numberOfDays = 0;
     UIDatePicker *datePicker = [[UIDatePicker alloc]init];
@@ -148,6 +149,9 @@ MKPlacemark *selectedPin;
     [mapItem openInMapsWithLaunchOptions:(@{MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving})];
 }
 
+#pragma mark ---Table View Delegates
+
+
 #pragma mark TextField Delegate
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
@@ -170,6 +174,7 @@ MKPlacemark *selectedPin;
 
 - (IBAction)submitBtnClick:(id)sender {
     _vw_UserSelection.hidden = YES;
+    self.weatherDisplay.hidden = NO;
     //Get the weather Info based on latitude and Longitude
     [sharedObject startWeatherDataDownLoad:latitude withLongitude:longitude withNumberOfDays:numberOfDays];
 }

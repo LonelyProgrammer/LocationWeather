@@ -17,7 +17,7 @@
 - (void)dropPinZoomIn:(MKPlacemark *)placemark :(int)Tag;
 @end
 
-@interface ViewController : UIViewController <CLLocationManagerDelegate, HandleMapSearch, MKMapViewDelegate>{
+@interface ViewController : UIViewController <CLLocationManagerDelegate, HandleMapSearch, MKMapViewDelegate,UITableViewDelegate,UITableViewDataSource>{
     WeatherResponseParser * sharedObject;
     NSString* latitude;
     NSString* longitude;
@@ -27,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtToLocation;
 - (IBAction)submitBtnClick:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *datePicketText;
+@property (weak, nonatomic) IBOutlet UITableView *weatherDisplay;
 
 @end
 
