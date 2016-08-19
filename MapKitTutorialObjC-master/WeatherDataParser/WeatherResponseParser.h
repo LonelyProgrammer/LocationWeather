@@ -18,9 +18,11 @@
     FetchWeatherData* sharedObject;
     NSDictionary* finalParsedDictionary;
      id <WeatherDataParseDelegate> delegate;
+    int numberOfDays;
 }
 @property (nonatomic,weak) id delegate;
 -(NSDictionary*)returnFinalParsedDictionary;
+-(int)returnNumberOfDays;
 -(void) startWeatherDataDownLoad:(NSString*)latitude withLongitude:(NSString*)longitude withNumberOfDays:(int)days;
 + (id)sharedManager;
 

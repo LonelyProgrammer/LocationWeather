@@ -18,32 +18,39 @@
     [super viewDidLoad];
     WeatherResponseParser* sharedObject = [WeatherResponseParser sharedManager];
     NSDictionary* weatherData = [sharedObject returnFinalParsedDictionary];
-    NSArray* array = [weatherData allValues];
     dataArray = [NSMutableArray array];
-    for(int i=0; i<array.count;i++){
-        AccordianTableViewHelper *prod = [[AccordianTableViewHelper alloc] init];
-        prod.name = [NSString stringWithFormat:@"Region%d",i];
-        prod.parent = @"";
-        prod.isExpanded = NO;
-        prod.level = 0;
-        prod.type  = OBJECT_TYPE_REGION;
-        // Randomly assign canBeExpanded status
-        if(i == 25)
-        {
+    numberOfDays =[sharedObject returnNumberOfDays];
+    if(numberOfDays ==0){
+        arraySingleEntryValues = [NSMutableArray arrayWithArray:[weatherData allValues]];
+        [arraySingleEntryValues removeObjectAtIndex:3];
+        [arraySingleEntryKeys removeObjectAtIndex:9];
+        [arraySingleEntryValues removeObjectAtIndex:10];
+        arraySingleEntryKeys = [NSMutableArray arrayWithArray:[weatherData allKeys]];
+        [arraySingleEntryKeys removeObjectAtIndex:3];
+        [arraySingleEntryKeys removeObjectAtIndex:9];
+        [arraySingleEntryKeys removeObjectAtIndex:10];
+        for(int i=0; i<2; i++){
+            AccordianTableViewHelper *prod = [[AccordianTableViewHelper alloc] init];
+            if(i ==0){
+            prod.name = [NSString stringWithFormat:@"%@ --%@",
+                         [[[arraySingleEntryValues objectAtIndex:0] componentsSeparatedByString:@"T"]objectAtIndex:0],@"DayTime"];
+            prod.parent = @"";
+            prod.level = 0;
+            prod.type  = OBJECT_TYPE_REGION;
             prod.canBeExpanded  = YES;
+            }
+            else{
+                prod.name = [NSString stringWithFormat:@"%@ --%@",
+                             [[[arraySingleEntryValues objectAtIndex:0] componentsSeparatedByString:@"T"]objectAtIndex:0],@"NightTime"] ;
+                prod.parent = @"";
+                prod.level = 0;
+                prod.type  = OBJECT_TYPE_REGION;
+                prod.canBeExpanded  = YES;
+            }
+            [dataArray addObject:prod];
+            prod = nil;
         }
-        else
-        {
-            prod.canBeExpanded = NO;
-        }
-        [dataArray addObject:prod];
     }
-   
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -123,26 +130,18 @@
         // The children property of the parent will be filled with this objects
         // If the parent is of type region, then fetch the location.
         if (parentProduct.type == OBJECT_TYPE_REGION) {
-            for(int i=0;i<10;i++)
-            {
-                AccordianTableViewHelper *prod = [[AccordianTableViewHelper alloc] init];
-                prod.name = [NSString stringWithFormat:@"Location %d",i];
-                prod.level  = parentProduct.level +1;
-                //prod.parent = [NSString stringWithFormat:@"Child %d of Level %d",i,prod.level];
-                // This is used for setting the indentation level so that it look like an accordion view
-                prod.type = OBJECT_TYPE_LOCATION;
-                prod.isExpanded = NO;
-                
-                if(i%2)
-                {
-                    prod.canBeExpanded = YES;
+            if(numberOfDays ==0){
+                for(int i=1;i < arraySingleEntryKeys.count - 5; i++){
+                    AccordianTableViewHelper *prod = [[AccordianTableViewHelper alloc] init];
+                    prod.name = [NSString stringWithFormat:@"%@-- %@",[arraySingleEntryKeys objectAtIndex:i],[arraySingleEntryValues objectAtIndex:i]];
+                    prod.level  = parentProduct.level +1;
+                    // This is used for setting the indentation level so that it look like an accordion view
+                    prod.type = OBJECT_TYPE_LOCATION;
+                    prod.isExpanded = NO;
+                    [parentProduct.children addObject:prod];
                 }
-                else
-                {
-                    prod.canBeExpanded = NO;
-                }
-                [parentProduct.children addObject:prod];
             }
+            
         }
         // If tapping on Location, fetch the users
         else{
