@@ -11,22 +11,14 @@
 #import "WeatherResponseParser.h"
 
 @import MapKit;
-
+#define kGOOGLE_API_KEY @"AIzaSyAZD2Wwnyh-dk6o1l_m3vrYu7r2DtfOQnU"
+#define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
 
 @protocol HandleMapSearch <NSObject>
 - (void)dropPinZoomIn:(MKPlacemark *)placemark :(int)Tag;
 @end
 
-<<<<<<< HEAD
 @interface ViewController : UIViewController <CLLocationManagerDelegate, HandleMapSearch, MKMapViewDelegate,UITableViewDelegate,UITableViewDataSource,WeatherDataParseDelegate>{
-=======
-
-
-#define kGOOGLE_API_KEY @"AIzaSyAZD2Wwnyh-dk6o1l_m3vrYu7r2DtfOQnU"
-#define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-
-@interface ViewController : UIViewController <CLLocationManagerDelegate, HandleMapSearch, MKMapViewDelegate,UITableViewDelegate,UITableViewDataSource>{
->>>>>>> origin/master
     WeatherResponseParser * sharedObject;
     NSString* latitude;
     NSString* longitude;
