@@ -21,6 +21,8 @@
     int numberOfDays;
 }
 @property (nonatomic,weak) id delegate;
+@property (nonatomic,strong) NSString* dateSelectedFromPicker;
+
 -(NSDictionary*)returnFinalParsedDictionary;
 -(int)returnNumberOfDays;
 -(void) startWeatherDataDownLoad:(NSString*)latitude withLongitude:(NSString*)longitude withNumberOfDays:(int)days;

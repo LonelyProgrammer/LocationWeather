@@ -39,7 +39,7 @@ NSString *buttonTitleUppercase;
     datePicker.datePickerMode = UIDatePickerModeDate;
     [datePicker addTarget:self action:@selector(dateTextField:) forControlEvents:UIControlEventValueChanged];
     [self.datePicketText setInputView:datePicker];
-    [self.datePicketText setPlaceholder:@"Maximum 10 days from current date"];
+    [self.datePicketText setPlaceholder:@"Maximum 2 days from current date"];
     
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
@@ -224,7 +224,7 @@ NSString *buttonTitleUppercase;
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDate *currentDate = [NSDate date];
     NSDateComponents *comps = [[NSDateComponents alloc] init];
-    [comps setDay:10];
+    [comps setDay:2];
     NSDate *maxDate = [calendar dateByAddingComponents:comps toDate:currentDate options:0];
 
     [picker setMaximumDate:maxDate];
@@ -235,6 +235,7 @@ NSString *buttonTitleUppercase;
     
     NSString *dateString = [dateFormat stringFromDate:eventDate];
     self.datePicketText.text = [NSString stringWithFormat:@"%@",dateString];
+    sharedObject.dateSelectedFromPicker = dateString;
     NSDateComponents *components = [calendar components:NSCalendarUnitDay
                                                         fromDate:currentDate
                                                           toDate:eventDate

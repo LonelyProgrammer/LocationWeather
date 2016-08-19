@@ -25,16 +25,14 @@
         for(int i=0; i<2; i++){
             AccordianTableViewHelper *prod = [[AccordianTableViewHelper alloc] init];
             if(i ==0){
-            prod.name = [NSString stringWithFormat:@"%@ --%@",
-                         [[[arrayMorningEntryValues objectAtIndex:0] componentsSeparatedByString:@"T"]objectAtIndex:0],@"DayTime"];
+            prod.name = [NSString stringWithFormat:@"%@ --%@",sharedObject.dateSelectedFromPicker,@"DayTime"];
             prod.parent = @"";
             prod.level = 0;
             prod.type  = OBJECT_TYPE_REGION;
             prod.canBeExpanded  = YES;
             }
             else{
-                prod.name = [NSString stringWithFormat:@"%@ --%@",
-                             [[[arrayMorningEntryValues objectAtIndex:0] componentsSeparatedByString:@"T"]objectAtIndex:0],@"NightTime"] ;
+                prod.name = [NSString stringWithFormat:@"%@ --%@",sharedObject.dateSelectedFromPicker,@"NightTime"] ;
                 prod.parent = @"";
                 prod.level = 0;
                 prod.type  = OBJECT_TYPE_REGION;
