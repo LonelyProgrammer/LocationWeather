@@ -35,6 +35,13 @@
 -(void) weatherDataDownloadedSuccess{
         NSMutableDictionary* initialParsedDictionary =  [NSMutableDictionary dictionaryWithDictionary:[sharedObject returnParsedDictionary]];
          finalParsedDictionary = [initialParsedDictionary valueForKey:@"forecasts"];
+        [self.delegate weatherDataParseSuccess];
 }
 
+-(NSDictionary*)returnFinalParsedDictionary{
+    return finalParsedDictionary;
+}
+-(void)weatherDataParseSuccess{
+    NSLog(@"Parsing Successful!!!");
+}
 @end

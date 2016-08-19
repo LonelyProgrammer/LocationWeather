@@ -17,7 +17,7 @@
 - (void)dropPinZoomIn:(MKPlacemark *)placemark :(int)Tag;
 @end
 
-@interface ViewController : UIViewController <CLLocationManagerDelegate, HandleMapSearch, MKMapViewDelegate,UITableViewDelegate,UITableViewDataSource>{
+@interface ViewController : UIViewController <CLLocationManagerDelegate, HandleMapSearch, MKMapViewDelegate,UITableViewDelegate,UITableViewDataSource,WeatherDataParseDelegate>{
     WeatherResponseParser * sharedObject;
     NSString* latitude;
     NSString* longitude;

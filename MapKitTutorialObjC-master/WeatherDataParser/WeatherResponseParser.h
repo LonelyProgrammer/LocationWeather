@@ -9,10 +9,18 @@
 #import <Foundation/Foundation.h>
 #import "FetchWeatherData.h"
 
+@protocol WeatherDataParseDelegate<NSObject>
+@required
+-(void) weatherDataParseSuccess;
+@end
+
 @interface WeatherResponseParser : NSObject<WeatherDataFetchedDelegate>{
     FetchWeatherData* sharedObject;
     NSDictionary* finalParsedDictionary;
+     id <WeatherDataParseDelegate> delegate;
 }
+@property (nonatomic,weak) id delegate;
+-(NSDictionary*)returnFinalParsedDictionary;
 -(void) startWeatherDataDownLoad:(NSString*)latitude withLongitude:(NSString*)longitude withNumberOfDays:(int)days;
 + (id)sharedManager;
 
