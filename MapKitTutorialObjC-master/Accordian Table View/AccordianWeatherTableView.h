@@ -11,9 +11,10 @@
 #import "WeatherResponseParser.h"
 
 @interface AccordianWeatherTableView : UITableViewController{
-    NSMutableArray* arraySingleEntryValues;
-    NSMutableArray* arraySingleEntryKeys;
-    NSMutableArray* arrayMultipleEntry;
+    NSMutableArray* arrayMorningEntryValues;
+    NSMutableArray* arrayMorningEntryKeys;
+    NSMutableArray* arrayNightEntryValues;
+     NSMutableArray* arrayNightEntryKeys;
     NSMutableArray *dataArray;
     NSInteger indentationlevel;
     CGFloat indendationWidth;

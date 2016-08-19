@@ -250,7 +250,7 @@ NSString *buttonTitleUppercase;
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
         AccordianWeatherTableView *weatherTable = [storyboard instantiateViewControllerWithIdentifier:@"AccordianWeatherTableView"];
         [[self navigationController] setNavigationBarHidden:NO animated:YES];
-        [self presentViewController:weatherTable animated:YES completion:nil];
+       [[self navigationController] pushViewController: weatherTable animated:YES];
         
     });
 }
