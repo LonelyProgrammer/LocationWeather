@@ -3,7 +3,7 @@
 //  HackathonTravelPlanner
 //
 //  Created by Rishi Bhattacharjee on 19/08/16.
-//  Copyright © 2016 Robert Chen. All rights reserved.
+//  Copyright © 2016 IBM. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
