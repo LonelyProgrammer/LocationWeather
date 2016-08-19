@@ -22,6 +22,7 @@
     NSString* latitude;
     NSString* longitude;
     int numberOfDays;
+    NSDictionary* weatherData;
 }
 @property (weak, nonatomic) IBOutlet UIView *vw_UserSelection;
 @property (weak, nonatomic) IBOutlet UITextField *txtToLocation;

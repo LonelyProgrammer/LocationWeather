@@ -7,12 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+@protocol WeatherDataFetchedDelegate <NSObject>
+@required
+-(void) weatherDataDownloadedSuccess;
+@end
 
 @interface FetchWeatherData : NSObject<NSURLSessionDelegate>{
-    
+    id <WeatherDataFetchedDelegate> delegate;
 }
+@property (nonatomic,weak) id delegate;
 + (id) sharedManager;
 -(void) startWeatherDataDownLoad:(NSString*)latitude withLongitude:(NSString*)longitude withNumberOfDays:(int)days;
--(NSDictionary*) getParsedDictionary;
-
+-(NSDictionary*) returnParsedDictionary;
 @end

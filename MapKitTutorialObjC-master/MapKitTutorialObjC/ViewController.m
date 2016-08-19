@@ -150,6 +150,13 @@ MKPlacemark *selectedPin;
 }
 
 #pragma mark ---Table View Delegates
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+//    return weatherData.count;
+//}
+
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    
+//}
 
 
 #pragma mark TextField Delegate

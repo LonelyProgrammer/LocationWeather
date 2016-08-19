@@ -12,7 +12,6 @@
 @implementation FetchWeatherData{
     NSDictionary *parsedJsonDictionary;
 }
-
 + (id)sharedManager {
     static FetchWeatherData *sharedMyManager = nil;
     static dispatch_once_t onceToken;
@@ -78,13 +77,15 @@
 
     NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:urlString] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         parsedJsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        NSLog(@"The parsed Json is =%@", parsedJsonDictionary);
+        [self.delegate weatherDataDownloadedSuccess];
     }];
     [dataTask resume];
 }
 
-
--(NSDictionary*) getParsedDictionary{
+-(void) weatherDataDownloadedSuccess{
+    NSLog(@"The parsed Json is =%@", parsedJsonDictionary);
+}
+-(NSDictionary*) returnParsedDictionary{
     return parsedJsonDictionary;
 }
 

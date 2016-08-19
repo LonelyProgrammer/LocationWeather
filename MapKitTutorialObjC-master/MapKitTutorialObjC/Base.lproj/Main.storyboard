@@ -101,10 +101,6 @@
                                     <constraint firstAttribute="height" constant="128" id="WhG-LY-hIJ"/>
                                 </constraints>
                                 <color key="separatorColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="3Zo-IB-XdK"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Jwe-Rq-Wmp"/>
-                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

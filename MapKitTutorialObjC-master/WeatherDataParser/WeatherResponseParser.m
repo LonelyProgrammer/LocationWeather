@@ -22,6 +22,7 @@
 - (id)init {
     if (self = [super init]) {
          sharedObject = [FetchWeatherData sharedManager];
+        sharedObject.delegate = self;
     }
     return self;
 }
@@ -29,4 +30,11 @@
 -(void) startWeatherDataDownLoad:(NSString*)latitude withLongitude:(NSString*)longitude withNumberOfDays:(int)days{
     [sharedObject startWeatherDataDownLoad:latitude withLongitude:longitude withNumberOfDays:days];
 }
+
+#pragma mark - Sample protocol delegate
+-(void) weatherDataDownloadedSuccess{
+        NSMutableDictionary* initialParsedDictionary =  [NSMutableDictionary dictionaryWithDictionary:[sharedObject returnParsedDictionary]];
+         finalParsedDictionary = [initialParsedDictionary valueForKey:@"forecasts"];
+}
+
 @end
