@@ -1,9 +1,9 @@
 //
-//  MapPoint.m
-//  GooglePlaces
+//  HackathonTravelPlanner
 //
-//  Created by van Lint Jason on 6/05/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by IBM on 04/08/16.
+//  Copyright © 2016 IBM. All rights reserved.
+//
 //
 
 #import "MapPoint.h"

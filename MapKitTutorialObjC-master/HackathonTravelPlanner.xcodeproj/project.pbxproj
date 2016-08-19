@@ -39,8 +39,8 @@
 
 /* Begin PBXFileReference section */
 		6D4760C51D5B588900355862 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		6DDAB98C1D67267B00D876B1 /* MapPoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapPoint.h; sourceTree = "<group>"; };
-		6DDAB98D1D67268400D876B1 /* MapPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapPoint.m; sourceTree = "<group>"; };
+		6DDAB98C1D67267B00D876B1 /* MapPoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MapPoint.h; path = MapKitTutorialObjC/MapPoint.h; sourceTree = "<group>"; };
+		6DDAB98D1D67268400D876B1 /* MapPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapPoint.m; path = MapKitTutorialObjC/MapPoint.m; sourceTree = "<group>"; };
 		6DDAB9911D67291300D876B1 /* atm.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = atm.jpg; sourceTree = "<group>"; };
 		6DDAB9921D67291300D876B1 /* atm@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "atm@2x.jpg"; sourceTree = "<group>"; };
 		6DDAB9931D67291300D876B1 /* atm@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "atm@3x.jpg"; sourceTree = "<group>"; };
@@ -150,6 +150,15 @@
 			path = Images/Florist;
 			sourceTree = "<group>";
 		};
+		6DDAB9B41D67303300D876B1 /* POI */ = {
+			isa = PBXGroup;
+			children = (
+				6DDAB98C1D67267B00D876B1 /* MapPoint.h */,
+				6DDAB98D1D67268400D876B1 /* MapPoint.m */,
+			);
+			name = POI;
+			sourceTree = "<group>";
+		};
 		6DEAB5271D5A0B0F0069C219 /* Search Location */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				FC47B5F41C4E9D3B007AB88A /* MapKit.framework */,
+				6DDAB9B41D67303300D876B1 /* POI */,
 				6DEAB52B1D5A0B630069C219 /* User Location */,
 				6DEAB5271D5A0B0F0069C219 /* Search Location */,
 				6DF015B51D53A4E600DE4725 /* Parser */,
@@ -210,8 +220,6 @@
 		FC47B5D91C4E87E8007AB88A /* HackathonTravelPlanner */ = {
 			isa = PBXGroup;
 			children = (
-				6DDAB98C1D67267B00D876B1 /* MapPoint.h */,
-				6DDAB98D1D67268400D876B1 /* MapPoint.m */,
 				6D4760C41D5B588900355862 /* Main.storyboard */,
 				FC47B5DD1C4E87E8007AB88A /* AppDelegate.h */,
 				FC47B5DE1C4E87E8007AB88A /* AppDelegate.m */,
