@@ -186,28 +186,7 @@ NSString *buttonTitleUppercase;
     return weatherData.count;
 }
 
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-////    static NSString *CellIdentifier = @"Cell";
-////    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-////    cell.textLabel.text = ;
-////    cell.detailTextLabel.text = prod.parent;
-////    cell.indentationLevel = prod.level;
-////    cell.indentationWidth = indendationWidth;
-////    // Show disclosure only if the cell can expand
-////    if(prod.canBeExpanded)
-////    {
-////        cell.accessoryView = [self viewForDisclosureForState:YES];
-////    }
-////    else
-////    {
-////        //cell.accessoryType = UITableViewCellAccessoryNone;
-////        cell.accessoryView = nil;
-////    }
-////    // Configure the cell...
-////    
-////    return cell;
-//}
+
 
 -(UIView*) viewForDisclosureForState:(BOOL) isExpanded
 {
@@ -413,8 +392,6 @@ NSString *buttonTitleUppercase;
 
 - (void)mapView:(MKMapView *)mv didAddAnnotationViews:(NSArray *)views
 {
-    
-        
     MKCoordinateSpan span = MKCoordinateSpanMake(5.05, 5.05);
     MKCoordinateRegion region = MKCoordinateRegionMake(globalPlacemark.coordinate, span);
     [_mapView setRegion:region animated:true];
