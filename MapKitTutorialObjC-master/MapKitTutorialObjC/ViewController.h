@@ -17,18 +17,33 @@
 - (void)dropPinZoomIn:(MKPlacemark *)placemark :(int)Tag;
 @end
 
+
+
+#define kGOOGLE_API_KEY @"AIzaSyAZD2Wwnyh-dk6o1l_m3vrYu7r2DtfOQnU"
+#define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+
 @interface ViewController : UIViewController <CLLocationManagerDelegate, HandleMapSearch, MKMapViewDelegate,UITableViewDelegate,UITableViewDataSource>{
     WeatherResponseParser * sharedObject;
     NSString* latitude;
     NSString* longitude;
     int numberOfDays;
     NSDictionary* weatherData;
+    int currenDist;
+    CLLocationCoordinate2D currentCentre;
+    MKPlacemark *globalPlacemark;
 }
 @property (weak, nonatomic) IBOutlet UIView *vw_UserSelection;
 @property (weak, nonatomic) IBOutlet UITextField *txtToLocation;
 - (IBAction)submitBtnClick:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *datePicketText;
 @property (weak, nonatomic) IBOutlet UITableView *weatherDisplay;
+- (IBAction)POIClick:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *lbl_poi;
+@property (weak, nonatomic) IBOutlet UIButton *btn_bar;
+@property (weak, nonatomic) IBOutlet UIButton *btn_cafe;
+@property (weak, nonatomic) IBOutlet UIButton *btn_florist;
+@property (weak, nonatomic) IBOutlet UIButton *btn_atm;
+@property (weak, nonatomic) IBOutlet UIButton *btn_park;
 
 @end
 

@@ -11,6 +11,7 @@
 //#import "LocationSearchTable.h"
 #import "UserLocationDetails.h"
 #import "SearchLocation.h"
+#import "MapPoint.h"
 
 
 @interface ViewController ()
@@ -24,6 +25,8 @@
 CLLocationManager *locationManager;
 UISearchController *resultSearchController;
 MKPlacemark *selectedPin;
+BOOL poiClicked;
+NSString *buttonTitleUppercase;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -51,6 +54,8 @@ MKPlacemark *selectedPin;
     [searchButton setImage:[UIImage imageNamed:@"search"]];
     
     self.navigationItem.rightBarButtonItem = searchButton;
+    
+    [self hideUnhidePOI:YES];
     
 }
 
@@ -94,6 +99,8 @@ MKPlacemark *selectedPin;
 
 - (void)dropPinZoomIn:(MKPlacemark *)placemark :(int)Tag
 {
+    [self hideUnhidePOI:NO];
+    globalPlacemark = placemark;
     UserLocationDetails *userLocationDetails = [[UserLocationDetails alloc]init];
     userLocationDetails.userplacemark = (MKPlacemark *)placemark;
     userLocationDetails.locationID = Tag;
@@ -126,20 +133,44 @@ MKPlacemark *selectedPin;
     static NSString *reuseId = @"pin";
     
     MKPinAnnotationView *pinView = (MKPinAnnotationView *) [_mapView dequeueReusableAnnotationViewWithIdentifier:reuseId];
-    if (pinView == nil) {
-        pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:reuseId];
-        pinView.enabled = YES;
-        pinView.canShowCallout = YES;
-        pinView.tintColor = [UIColor orangeColor];
-    } else {
-        pinView.annotation = annotation;
+    
+    if (!poiClicked) {
+        if (pinView == nil) {
+            pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:reuseId];
+            pinView.enabled = YES;
+            pinView.canShowCallout = YES;
+            pinView.tintColor = [UIColor orangeColor];
+        } else {
+            pinView.annotation = annotation;
+        }
+        
+        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+        [button setBackgroundImage:[UIImage imageNamed:@"car"]
+                          forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(getDirections) forControlEvents:UIControlEventTouchUpInside];
+        pinView.leftCalloutAccessoryView = button;
+        
+    }
+    else{
+        if (pinView == nil) {
+            pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:reuseId];
+            pinView.enabled = YES;
+            pinView.canShowCallout = YES;
+            pinView.tintColor = [UIColor blueColor];
+        } else {
+            pinView.tintColor = [UIColor colorWithRed:196.0/255.0f green:96.0/255.0f blue:46.0/255.0f alpha:1.0];
+            pinView.annotation = annotation;
+        }
+        
+        UIImageView *imgAccessoryVw = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
+        imgAccessoryVw.image = [UIImage imageNamed:buttonTitleUppercase];
+        pinView.leftCalloutAccessoryView = imgAccessoryVw;
+        
     }
     
-    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-    [button setBackgroundImage:[UIImage imageNamed:@"car"]
-                      forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(getDirections) forControlEvents:UIControlEventTouchUpInside];
-    pinView.leftCalloutAccessoryView = button;
+    
+    
+    
     
     return pinView;
 }
@@ -180,10 +211,29 @@ MKPlacemark *selectedPin;
 #pragma mark ---Button actions
 
 - (IBAction)submitBtnClick:(id)sender {
-    _vw_UserSelection.hidden = YES;
-    self.weatherDisplay.hidden = NO;
-    //Get the weather Info based on latitude and Longitude
-    [sharedObject startWeatherDataDownLoad:latitude withLongitude:longitude withNumberOfDays:numberOfDays];
+    if (_txtToLocation.text.length > 0 && _datePicketText.text.length > 0) {
+        poiClicked = NO;
+        _vw_UserSelection.hidden = YES;
+        self.weatherDisplay.hidden = NO;
+        [self dropPinZoomIn:globalPlacemark :1];
+        //Get the weather Info based on latitude and Longitude
+        [sharedObject startWeatherDataDownLoad:latitude withLongitude:longitude withNumberOfDays:numberOfDays];
+    }
+    else{
+        UIAlertController * alert=   [UIAlertController
+                                      alertControllerWithTitle:nil
+                                      message:@"Please input your travel location and the date of journey to get the weather forecast."
+                                      preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+            
+            //do something when click button
+        }];
+        [alert addAction:okAction];
+        UIViewController *vc = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+        [vc presentViewController:alert animated:YES completion:nil];
+    }
+    
 }
 
 -(void) dateTextField:(id)sender
@@ -210,6 +260,131 @@ MKPlacemark *selectedPin;
                                                          options:0];
     numberOfDays = (int)[components day];
     [self.datePicketText resignFirstResponder];
+}
+
+
+#pragma mark --
+#pragma mark Place Of Interest
+- (IBAction)POIClick:(id)sender {
+    poiClicked = YES;
+    UIButton *btn = (UIButton*)sender;
+    buttonTitleUppercase = btn.titleLabel.text;
+    NSString *buttonTitle = [btn.titleLabel.text lowercaseString];
+    
+    //Use this title text to build the URL query and get the data from Google. Change the radius value to increase the size of the search area in meters. The max is 50,000.
+    [self queryGooglePlaces:buttonTitle];
+}
+
+
+-(void) queryGooglePlaces: (NSString *) googleType
+{
+    
+    
+    // Build the url string we are going to sent to Google. NOTE: The kGOOGLE_API_KEY is a constant which should contain your own API key that you can obtain from Google. See this link for more info:
+    // https://developers.google.com/maps/documentation/places/#Authentication
+    NSString *url = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/search/json?location=%f,%f&radius=10000&types=%@&sensor=true&key=%@", globalPlacemark.coordinate.latitude, globalPlacemark.coordinate.longitude, googleType, kGOOGLE_API_KEY];
+    //NSString *url = @"https://maps.googleapis.com/maps/api/place/search/json?location=22.0522,88.2437&radius=2619408&types=bar&sensor=true&key=AIzaSyAZD2Wwnyh-dk6o1l_m3vrYu7r2DtfOQnU";
+    //Formulate the string as URL object.
+    NSURL *googleRequestURL=[NSURL URLWithString:url];
+    
+    // Retrieve the results of the URL.
+    dispatch_async(kBgQueue, ^{
+        NSData* data = [NSData dataWithContentsOfURL: googleRequestURL];
+        [self performSelectorOnMainThread:@selector(fetchedData:) withObject:data waitUntilDone:YES];
+    });
+}
+
+
+- (void)fetchedData:(NSData *)responseData {
+    //parse out the json data
+    NSError* error;
+    NSDictionary* json = [NSJSONSerialization
+                          JSONObjectWithData:responseData
+                          
+                          options:kNilOptions
+                          error:&error];
+    
+    //The results from Google will be an array obtained from the NSDictionary object with the key "results".
+    NSArray* places = [json objectForKey:@"results"];
+    
+    //Write out the data to the console.
+    NSLog(@"Google Data: %@", places);
+    
+    //Plot the data in the places array onto the map with the plotPostions method.
+    [self plotPositions:places];
+    
+    
+}
+
+
+
+- (void)plotPositions:(NSArray *)data
+{
+    //Remove any existing custom annotations but not the user location blue dot.
+    for (id<MKAnnotation> annotation in _mapView.annotations)
+    {
+        if ([annotation isKindOfClass:[MapPoint class]])
+        {
+            [_mapView removeAnnotation:annotation];
+        }
+    }
+    
+    
+    //Loop through the array of places returned from the Google API.
+    for (int i=0; i<[data count]; i++)
+    {
+        
+        //Retrieve the NSDictionary object in each index of the array.
+        NSDictionary* place = [data objectAtIndex:i];
+        
+        //There is a specific NSDictionary object that gives us location info.
+        NSDictionary *geo = [place objectForKey:@"geometry"];
+        
+        
+        //Get our name and address info for adding to a pin.
+        NSString *name=[place objectForKey:@"name"];
+        NSString *vicinity=[place objectForKey:@"vicinity"];
+        
+        //Get the lat and long for the location.
+        NSDictionary *loc = [geo objectForKey:@"location"];
+        
+        //Create a special variable to hold this coordinate info.
+        CLLocationCoordinate2D placeCoord;
+        
+        //Set the lat and long.
+        placeCoord.latitude=[[loc objectForKey:@"lat"] doubleValue];
+        placeCoord.longitude=[[loc objectForKey:@"lng"] doubleValue];
+        
+        //Create a new annotiation.
+        MapPoint *placeObject = [[MapPoint alloc] initWithName:name address:vicinity coordinate:placeCoord];
+        
+        
+        [_mapView addAnnotation:placeObject];
+    }
+}
+
+- (void)mapView:(MKMapView *)mv didAddAnnotationViews:(NSArray *)views
+{
+    
+        
+    MKCoordinateSpan span = MKCoordinateSpanMake(5.05, 5.05);
+    MKCoordinateRegion region = MKCoordinateRegionMake(globalPlacemark.coordinate, span);
+    [_mapView setRegion:region animated:true];
+    
+    //Set the visible region of the map.
+    [mv setRegion:region animated:YES];
+    
+}
+
+
+
+-(void)hideUnhidePOI:(BOOL)status{
+    _lbl_poi.hidden = status;
+    _btn_bar.hidden = status;
+    _btn_atm.hidden = status;
+    _btn_cafe.hidden = status;
+    _btn_park.hidden = status;
+    _btn_florist.hidden = status;
 }
 
 @end
