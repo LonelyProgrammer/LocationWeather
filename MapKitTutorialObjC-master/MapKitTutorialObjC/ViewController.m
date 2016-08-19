@@ -8,7 +8,7 @@
 
 
 #import "ViewController.h"
-//#import "LocationSearchTable.h"
+#import "AccordianWeatherTableView.h"
 #import "UserLocationDetails.h"
 #import "SearchLocation.h"
 #import "MapPoint.h"
@@ -32,7 +32,6 @@ NSString *buttonTitleUppercase;
     [super viewDidLoad];
     sharedObject = [[WeatherResponseParser sharedManager]init];
     sharedObject.delegate = self;
-    self.weatherDisplay.hidden = YES;
     //[[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(openUserSelection) name:@"UserSelecton" object:nil];
     numberOfDays = 0;
     UIDatePicker *datePicker = [[UIDatePicker alloc]init];
@@ -49,13 +48,10 @@ NSString *buttonTitleUppercase;
     [locationManager requestWhenInUseAuthorization];
     
     self.title = @"Weather Tracker";
-    
     UIBarButtonItem *searchButton = [[UIBarButtonItem alloc] initWithTitle:nil style:UIBarButtonItemStylePlain
                                                                     target:self action:@selector(userSelectionOpen:)];
     [searchButton setImage:[UIImage imageNamed:@"search"]];
-    
     self.navigationItem.rightBarButtonItem = searchButton;
-    
     [self hideUnhidePOI:YES];
     
 }
@@ -168,11 +164,6 @@ NSString *buttonTitleUppercase;
         pinView.leftCalloutAccessoryView = imgAccessoryVw;
         
     }
-    
-    
-    
-    
-    
     return pinView;
 }
 
@@ -181,57 +172,7 @@ NSString *buttonTitleUppercase;
     [mapItem openInMapsWithLaunchOptions:(@{MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving})];
 }
 
-#pragma mark ---Table View Delegates
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return weatherData.count;
-}
-
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    static NSString *CellIdentifier = @"Cell";
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-//    cell.textLabel.text = ;
-//    cell.detailTextLabel.text = prod.parent;
-//    cell.indentationLevel = prod.level;
-//    cell.indentationWidth = indendationWidth;
-//    // Show disclosure only if the cell can expand
-//    if(prod.canBeExpanded)
-//    {
-//        cell.accessoryView = [self viewForDisclosureForState:YES];
-//    }
-//    else
-//    {
-//        //cell.accessoryType = UITableViewCellAccessoryNone;
-//        cell.accessoryView = nil;
-//    }
-//    // Configure the cell...
-//    
-//    return cell;
-//}
-
-
-
--(UIView*) viewForDisclosureForState:(BOOL) isExpanded
-{
-    NSString *imageName;
-    if(isExpanded)
-    {
-        imageName = @"ArrowD_blue.png";
-    }
-    else
-    {
-        imageName = @"ArrowR_blue.png";
-    }
-    UIView *myView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
-    UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
-    [imgView setFrame:CGRectMake(0, 6, 24, 24)];
-    [myView addSubview:imgView];
-    return myView;
-}
-
-
-
-#pragma mark TextField Delegate
+#pragma mark ----TextField Delegate
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
     
@@ -255,7 +196,6 @@ NSString *buttonTitleUppercase;
     if (_txtToLocation.text.length > 0 && _datePicketText.text.length > 0) {
         poiClicked = NO;
         _vw_UserSelection.hidden = YES;
-        self.weatherDisplay.hidden = NO;
         [self dropPinZoomIn:globalPlacemark :1];
         //Get the weather Info based on latitude and Longitude
         [sharedObject startWeatherDataDownLoad:latitude withLongitude:longitude withNumberOfDays:numberOfDays];
@@ -306,14 +246,16 @@ NSString *buttonTitleUppercase;
 #pragma mark ---Singleton Delegates
 
 -(void) weatherDataParseSuccess{
-    self.weatherDisplay.delegate = self;
-    self.weatherDisplay.dataSource = self;
-    weatherData = [sharedObject returnFinalParsedDictionary] ;
-    [self.weatherDisplay reloadData];
-    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+        AccordianWeatherTableView *weatherTable = [storyboard instantiateViewControllerWithIdentifier:@"AccordianWeatherTableView"];
+        [[self navigationController] setNavigationBarHidden:NO animated:YES];
+        [self presentViewController:weatherTable animated:YES completion:nil];
+        
+    });
 }
-#pragma mark --
-#pragma mark Place Of Interest
+
+#pragma mark -----Place Of Interest
 
 - (IBAction)POIClick:(id)sender {
     poiClicked = YES;

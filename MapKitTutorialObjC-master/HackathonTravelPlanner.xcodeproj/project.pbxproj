@@ -25,6 +25,8 @@
 		6DDAB9B11D67297D00D876B1 /* ArrowR_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DDAB9AD1D67297D00D876B1 /* ArrowR_blue.png */; };
 		6DDAB9B21D67297D00D876B1 /* ArrowR_blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DDAB9AE1D67297D00D876B1 /* ArrowR_blue@2x.png */; };
 		6DDAB9B31D67297D00D876B1 /* Splash_WeatherAssist.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DDAB9AF1D67297D00D876B1 /* Splash_WeatherAssist.png */; };
+		6DDAB9C01D6774EE00D876B1 /* AccordianTableViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DDAB9BD1D6774EE00D876B1 /* AccordianTableViewHelper.m */; };
+		6DDAB9C11D6774EE00D876B1 /* AccordianWeatherTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DDAB9BF1D6774EE00D876B1 /* AccordianWeatherTableView.m */; };
 		6DEAB52A1D5A0B330069C219 /* SearchLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DEAB5291D5A0B330069C219 /* SearchLocation.m */; };
 		6DEAB52E1D5A0B750069C219 /* UserLocationDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DEAB52D1D5A0B750069C219 /* UserLocationDetails.m */; };
 		6DF015B41D53A4DC00DE4725 /* FetchWeatherData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DF015B31D53A4DC00DE4725 /* FetchWeatherData.m */; };
@@ -57,6 +59,10 @@
 		6DDAB9AD1D67297D00D876B1 /* ArrowR_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ArrowR_blue.png; path = Images/ArrowR_blue.png; sourceTree = "<group>"; };
 		6DDAB9AE1D67297D00D876B1 /* ArrowR_blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ArrowR_blue@2x.png"; path = "Images/ArrowR_blue@2x.png"; sourceTree = "<group>"; };
 		6DDAB9AF1D67297D00D876B1 /* Splash_WeatherAssist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Splash_WeatherAssist.png; path = Images/Splash_WeatherAssist.png; sourceTree = "<group>"; };
+		6DDAB9BC1D6774EE00D876B1 /* AccordianTableViewHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccordianTableViewHelper.h; path = "Accordian Table View/AccordianTableViewHelper.h"; sourceTree = "<group>"; };
+		6DDAB9BD1D6774EE00D876B1 /* AccordianTableViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccordianTableViewHelper.m; path = "Accordian Table View/AccordianTableViewHelper.m"; sourceTree = "<group>"; };
+		6DDAB9BE1D6774EE00D876B1 /* AccordianWeatherTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccordianWeatherTableView.h; path = "Accordian Table View/AccordianWeatherTableView.h"; sourceTree = "<group>"; };
+		6DDAB9BF1D6774EE00D876B1 /* AccordianWeatherTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccordianWeatherTableView.m; path = "Accordian Table View/AccordianWeatherTableView.m"; sourceTree = "<group>"; };
 		6DEAB5281D5A0B330069C219 /* SearchLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchLocation.h; path = "Search Location/SearchLocation.h"; sourceTree = "<group>"; };
 		6DEAB5291D5A0B330069C219 /* SearchLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchLocation.m; path = "Search Location/SearchLocation.m"; sourceTree = "<group>"; };
 		6DEAB52C1D5A0B750069C219 /* UserLocationDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserLocationDetails.h; path = UserLocation/UserLocationDetails.h; sourceTree = "<group>"; };
@@ -159,6 +165,17 @@
 			name = POI;
 			sourceTree = "<group>";
 		};
+		6DDAB9BB1D6774D800D876B1 /* WeatherDisplay */ = {
+			isa = PBXGroup;
+			children = (
+				6DDAB9BC1D6774EE00D876B1 /* AccordianTableViewHelper.h */,
+				6DDAB9BD1D6774EE00D876B1 /* AccordianTableViewHelper.m */,
+				6DDAB9BE1D6774EE00D876B1 /* AccordianWeatherTableView.h */,
+				6DDAB9BF1D6774EE00D876B1 /* AccordianWeatherTableView.m */,
+			);
+			name = WeatherDisplay;
+			sourceTree = "<group>";
+		};
 		6DEAB5271D5A0B0F0069C219 /* Search Location */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				FC47B5F41C4E9D3B007AB88A /* MapKit.framework */,
+				6DDAB9BB1D6774D800D876B1 /* WeatherDisplay */,
 				6DDAB9B41D67303300D876B1 /* POI */,
 				6DEAB52B1D5A0B630069C219 /* User Location */,
 				6DEAB5271D5A0B0F0069C219 /* Search Location */,
@@ -239,8 +257,8 @@
 		FC47B5DA1C4E87E8007AB88A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				6DDAB98F1D6728E800D876B1 /* Images */,
 				FC47B5DB1C4E87E8007AB88A /* main.m */,
+				6DDAB98F1D6728E800D876B1 /* Images */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -335,6 +353,8 @@
 				FC47B5E21C4E87E8007AB88A /* ViewController.m in Sources */,
 				6DF015B41D53A4DC00DE4725 /* FetchWeatherData.m in Sources */,
 				6DF015B81D53A52900DE4725 /* WeatherResponseParser.m in Sources */,
+				6DDAB9C01D6774EE00D876B1 /* AccordianTableViewHelper.m in Sources */,
+				6DDAB9C11D6774EE00D876B1 /* AccordianWeatherTableView.m in Sources */,
 				FC47B5DF1C4E87E8007AB88A /* AppDelegate.m in Sources */,
 				6DDAB98E1D67268400D876B1 /* MapPoint.m in Sources */,
 				FC47B5DC1C4E87E8007AB88A /* main.m in Sources */,

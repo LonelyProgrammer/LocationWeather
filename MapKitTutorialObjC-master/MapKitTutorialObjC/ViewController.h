@@ -18,22 +18,21 @@
 - (void)dropPinZoomIn:(MKPlacemark *)placemark :(int)Tag;
 @end
 
-@interface ViewController : UIViewController <CLLocationManagerDelegate, HandleMapSearch, MKMapViewDelegate,UITableViewDelegate,UITableViewDataSource,WeatherDataParseDelegate>{
+@interface ViewController : UIViewController <CLLocationManagerDelegate, HandleMapSearch, MKMapViewDelegate,WeatherDataParseDelegate>{
     WeatherResponseParser * sharedObject;
     NSString* latitude;
     NSString* longitude;
     int numberOfDays;
-    NSDictionary* weatherData;
     int currenDist;
     CLLocationCoordinate2D currentCentre;
     MKPlacemark *globalPlacemark;
-}
+  }
+- (IBAction)POIClick:(id)sender;
+- (IBAction)submitBtnClick:(id)sender;
+
 @property (weak, nonatomic) IBOutlet UIView *vw_UserSelection;
 @property (weak, nonatomic) IBOutlet UITextField *txtToLocation;
-- (IBAction)submitBtnClick:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *datePicketText;
-@property (weak, nonatomic) IBOutlet UITableView *weatherDisplay;
-- (IBAction)POIClick:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *lbl_poi;
 @property (weak, nonatomic) IBOutlet UIButton *btn_bar;
 @property (weak, nonatomic) IBOutlet UIButton *btn_cafe;

@@ -33,9 +33,13 @@
 
 #pragma mark - Sample protocol delegate
 -(void) weatherDataDownloadedSuccess{
-        NSMutableDictionary* initialParsedDictionary =  [NSMutableDictionary dictionaryWithDictionary:[sharedObject returnParsedDictionary]];
-         finalParsedDictionary = [initialParsedDictionary valueForKey:@"forecasts"];
-        [self.delegate weatherDataParseSuccess];
+    NSMutableDictionary* initialParsedDictionary =  [NSMutableDictionary dictionaryWithDictionary:[sharedObject returnParsedDictionary]];
+    if([initialParsedDictionary valueForKey:@"forecasts"])
+        finalParsedDictionary = [initialParsedDictionary valueForKey:@"forecasts"];
+    else{
+        finalParsedDictionary = [initialParsedDictionary valueForKey:@"observation"];
+    }
+    [self.delegate weatherDataParseSuccess];
 }
 
 -(NSDictionary*)returnFinalParsedDictionary{
