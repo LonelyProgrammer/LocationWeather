@@ -415,9 +415,9 @@ NSString *buttonTitleUppercase;
 
 - (void)mapView:(MKMapView *)mv didAddAnnotationViews:(NSArray *)views
 {
-    MKCoordinateSpan span = MKCoordinateSpanMake(5.05, 5.05);
-    MKCoordinateRegion region = MKCoordinateRegionMake(globalPlacemark.coordinate, span);
-    [_mapView setRegion:region animated:true];
+//    MKCoordinateSpan span = MKCoordinateSpanMake(5.05, 5.05);
+//    MKCoordinateRegion region = MKCoordinateRegionMake(globalPlacemark.coordinate, span);
+//    [_mapView setRegion:region animated:true];
     
     //Set the visible region of the map.
    // [mv setRegion:region animated:YES];
